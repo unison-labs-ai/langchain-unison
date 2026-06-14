@@ -21,15 +21,17 @@ def _fake_response(status_code: int, body: Any) -> MagicMock:
 # Test data
 # ---------------------------------------------------------------------------
 
-INGEST_RESPONSE = {"results": [{"type": "conversation", "jobId": "job-abc-123"}]}
+INGEST_RESPONSE = {"items": [{"type": "conversation", "jobId": "job-abc-123"}]}
 
+# /v1/brain/context hits are flat with a `snippet` field (search hits nest under `doc`).
 CONTEXT_RESPONSE = {
     "weakEvidence": False,
     "hits": [
         {
-            "doc": {"path": "/private/kb/decisions/pricing.md", "title": "Pricing decision"},
+            "path": "/private/kb/decisions/pricing.md",
+            "title": "Pricing decision",
             "score": 0.92,
-            "highlight": "We decided on a freemium model with a $49/mo pro tier.",
+            "snippet": "We decided on a freemium model with a $49/mo pro tier.",
         }
     ],
     "contextMd": "## Pricing\nWe decided on a freemium model with a $49/mo pro tier.",
