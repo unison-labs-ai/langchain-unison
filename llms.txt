@@ -1,0 +1,45 @@
+# langchain-unison
+
+> Python package that gives LangChain applications persistent memory backed by
+> the Unison brain — a personal knowledge graph that stores and recalls context
+> across every session, tool, and agent.
+
+**Agents: start with [AGENTS.md](AGENTS.md)** — it covers install, auth, the
+three classes, and the recall-before / persist-after pattern in one page.
+
+## Docs
+- [README.md](README.md): overview, quickstart, usage snippets, env vars, releasing
+- [AGENTS.md](AGENTS.md): how an AI agent installs, authenticates, and uses this package; contributing guide
+- [CONTRIBUTING.md](CONTRIBUTING.md): development setup, conventions, PR checklist
+- [SECURITY.md](SECURITY.md): vulnerability reporting and credential handling
+
+## Usage
+Install:
+```bash
+pip install langchain-unison
+```
+Set your Unison API key:
+```bash
+export UNISON_TOKEN="usk_live_..."
+```
+Use in a LangChain chain:
+```python
+from langchain_unison import UnisonMemory, UnisonChatMessageHistory, UnisonRetriever
+```
+
+## Examples
+```python
+# Recall context before reasoning
+memory = UnisonMemory()
+inputs = {"input": "What pricing model did we decide on?"}
+inputs.update(memory.load_memory_variables(inputs))
+# ... run chain ...
+memory.save_context(inputs, outputs)
+
+# Session-scoped message history
+history = UnisonChatMessageHistory(session_id="my-session-001")
+
+# Semantic search retriever
+retriever = UnisonRetriever(k=6)
+docs = retriever.invoke("enterprise tier decision")
+```
