@@ -97,9 +97,9 @@ class UnisonClient:
             )
             resp.raise_for_status()
             data = resp.json()
-            results = data.get("results", [])
-            if results:
-                return IngestResult(job_id=results[0].get("jobId", ""))
+            items = data.get("items", [])
+            if items:
+                return IngestResult(job_id=items[0].get("jobId", ""))
             return IngestResult(job_id="")
         except Exception:
             return None
@@ -114,13 +114,15 @@ class UnisonClient:
             )
             resp.raise_for_status()
             data = resp.json()
+            # /v1/brain/context hits are flat (path/title/snippet at top level),
+            # unlike /v1/brain/search hits which nest under `doc` with `highlight`.
             hits = [
                 Hit(
-                    path=h.get("doc", {}).get("path", ""),
-                    title=h.get("doc", {}).get("title", ""),
+                    path=h.get("path", ""),
+                    title=h.get("title", ""),
                     score=float(h.get("score", 0.0)),
-                    highlight=h.get("highlight", ""),
-                    body_md=h.get("doc", {}).get("bodyMd"),
+                    highlight=h.get("snippet", ""),
+                    body_md=None,
                 )
                 for h in data.get("hits", [])
             ]
