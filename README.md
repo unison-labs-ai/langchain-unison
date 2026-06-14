@@ -1,10 +1,27 @@
+<div align="center">
+
+<img src="https://raw.githubusercontent.com/unison-labs-ai/unison-brain/main/assets/brain.svg" alt="Unison Brain" width="140" />
+
 # langchain-unison
 
-![CI](https://github.com/unison-labs-ai/langchain-unison/actions/workflows/ci.yml/badge.svg)
+### LangChain memory, history & retriever — backed by the Unison brain.
+
+[![CI](https://github.com/unison-labs-ai/langchain-unison/actions/workflows/ci.yml/badge.svg)](https://github.com/unison-labs-ai/langchain-unison/actions/workflows/ci.yml)
+[![PyPI](https://img.shields.io/pypi/v/langchain-unison)](https://pypi.org/project/langchain-unison/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
+[![Stars](https://img.shields.io/github/stars/unison-labs-ai/langchain-unison?style=social)](https://github.com/unison-labs-ai/langchain-unison)
+
+[**Install**](#install) • [**UnisonMemory**](#unisonmemory) • [**UnisonChatMessageHistory**](#unisonChatmessagehistory) • [**UnisonRetriever**](#unisonretriever) • [**Env vars**](#environment-variables) • [**For agents**](#for-agents)
+
+</div>
+
+---
+
+> **🤖 Reading this as an AI agent?** Jump to [`AGENTS.md`](./AGENTS.md) — it
+> covers install, auth (`UNISON_TOKEN`), the three classes, the recall-before /
+> persist-after pattern, and the contributor guide, all in one page.
 
 LangChain memory, chat history, and retriever backed by the [Unison brain](https://unisonlabs.ai) — a personal knowledge graph that stores and recalls context across every session, tool, and agent.
-
-Powered by the Unison brain.
 
 ## Install
 
@@ -81,6 +98,10 @@ for doc in docs:
 
 You can also pass `token=` and `base_url=` directly to any class constructor.
 
+## For agents
+
+See [`AGENTS.md`](./AGENTS.md) — install, auth, usage patterns, and contributor guide in one page.
+
 ## Links
 
 - Homepage: https://unisonlabs.ai
@@ -109,3 +130,28 @@ If Trusted Publishing is not configured, set the repository secret `PYPI_API_TOK
 ## License
 
 MIT — see [LICENSE](LICENSE).
+
+---
+
+## Part of the Unison Labs constellation
+
+**One brain, every agent.** Every repo below reads from _and writes to_ the same [Unison brain](https://unisonlabs.ai) — no per-tool memory silos.
+
+| Repo | What it does |
+|---|---|
+| [unison-brain](https://github.com/unison-labs-ai/unison-brain) | CLI · SDK · MCP server — the core |
+| [claude-unison](https://github.com/unison-labs-ai/claude-unison) | Memory for Claude Code |
+| [cursor-unison](https://github.com/unison-labs-ai/cursor-unison) | Memory for Cursor |
+| [codex-unison](https://github.com/unison-labs-ai/codex-unison) | Memory for OpenAI Codex CLI |
+| [opencode-unison](https://github.com/unison-labs-ai/opencode-unison) | Memory for OpenCode |
+| [openclaw-unison](https://github.com/unison-labs-ai/openclaw-unison) | Memory for OpenClaw |
+| [pipecat-unison](https://github.com/unison-labs-ai/pipecat-unison) | Memory for Pipecat voice agents |
+| **[langchain-unison](https://github.com/unison-labs-ai/langchain-unison)** | **LangChain memory, history & retriever ← you are here** |
+| [llama-index-memory-unison](https://github.com/unison-labs-ai/llama-index-memory-unison) | LlamaIndex memory provider |
+| [unison-ai-sdk](https://github.com/unison-labs-ai/unison-ai-sdk) | Vercel AI SDK memory middleware |
+| [unison-mastra](https://github.com/unison-labs-ai/unison-mastra) | Mastra agent memory provider |
+| [python-sdk](https://github.com/unison-labs-ai/python-sdk) | Python SDK for the brain |
+| [install-mcp](https://github.com/unison-labs-ai/install-mcp) | One-command MCP installer |
+| [unison-fs](https://github.com/unison-labs-ai/unison-fs) | Mount the brain as a filesystem |
+| [backchannel](https://github.com/unison-labs-ai/backchannel) | Async messaging between agents |
+| [Unison-evals](https://github.com/unison-labs-ai/Unison-evals) | Open memory benchmark suite |
