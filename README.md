@@ -121,7 +121,7 @@ export TWINE_PASSWORD=pypi-...
 Then run:
 
 ```bash
-python scripts/release.py
+python3 scripts/release.py
 ```
 
 This builds `langchain-unison`, publishes it to PyPI (idempotent — skips if the version is already on PyPI), then tags and pushes the release tag.
