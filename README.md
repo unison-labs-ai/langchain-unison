@@ -111,21 +111,20 @@ See [`AGENTS.md`](./AGENTS.md) — install, auth, usage patterns, and contributo
 
 ## Releasing
 
-This package publishes to PyPI via GitHub Actions on any `v*` tag.
+Set a PyPI token — either via `~/.pypirc` or environment variables:
 
-**Preferred: PyPI Trusted Publishing (no long-lived secret)**
+```bash
+export TWINE_USERNAME=__token__
+export TWINE_PASSWORD=pypi-...
+```
 
-1. Go to https://pypi.org/manage/account/publishing/ and add a new publisher:
-   - PyPI project name: `langchain-unison`
-   - GitHub owner: `unison-labs-ai`
-   - Repository: `langchain-unison`
-   - Workflow: `release.yml`
-   - Environment: *(leave blank)*
-2. Push a tag: `git tag v0.1.0 && git push origin v0.1.0`
+Then run:
 
-**Fallback: API token**
+```bash
+python scripts/release.py
+```
 
-If Trusted Publishing is not configured, set the repository secret `PYPI_API_TOKEN` and uncomment the `password` field in `.github/workflows/release.yml`.
+This builds `langchain-unison`, publishes it to PyPI (idempotent — skips if the version is already on PyPI), then tags and pushes the release tag.
 
 ## License
 
