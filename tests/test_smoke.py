@@ -28,7 +28,7 @@ CONTEXT_RESPONSE = {
     "weakEvidence": False,
     "hits": [
         {
-            "path": "/private/kb/decisions/pricing.md",
+            "path": "/private/decision/pricing.md",
             "title": "Pricing decision",
             "score": 0.92,
             "snippet": "We decided on a freemium model with a $49/mo pro tier.",
@@ -41,7 +41,7 @@ SEARCH_RESPONSE = {
     "results": [
         {
             "doc": {
-                "path": "/private/kb/decisions/pricing.md",
+                "path": "/private/decision/pricing.md",
                 "title": "Pricing decision",
                 "bodyMd": "Full body of the pricing document.",
             },
@@ -220,7 +220,7 @@ class TestUnisonRetriever:
         doc = docs[0]
         # bodyMd takes priority over highlight when present
         assert doc.page_content == "Full body of the pricing document."
-        assert doc.metadata["path"] == "/private/kb/decisions/pricing.md"
+        assert doc.metadata["path"] == "/private/decision/pricing.md"
         assert doc.metadata["title"] == "Pricing decision"
         assert abs(doc.metadata["score"] - 0.88) < 1e-6
 
